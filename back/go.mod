@@ -1,7 +1,9 @@
 module github.com/Haise240/al_tour
 
 go 1.22.2
-
+replace github.com/Haise240/Al_tour/database => ./database
+replace github.com/Haise240/Al_tour/handlers => ./handlers
+replace github.com/Haise240/Al_tour/models => ./models
 require (
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible // indirect
 	github.com/golang-jwt/jwt v3.2.2+incompatible // indirect
