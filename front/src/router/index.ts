@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
-import Home from '../views/Home.vue';
+import Home from '../views/HomeMain.vue';
 import TourDetails from '../views/TourDetails.vue';
-import Booking from '../views/Booking.vue';
+import Booking from '../views/BookingPage.vue';
 import AdminPanel from '../views/AdminPanel.vue';
 
 const routes: Array<RouteRecordRaw> = [
@@ -29,7 +29,7 @@ const routes: Array<RouteRecordRaw> = [
 ];
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHistory(),
   routes
 });
 
