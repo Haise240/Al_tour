@@ -3,8 +3,8 @@ package main
 import (
 	"os"
 
-	"github.com/Haise240/Al_tour/database"
-	"github.com/Haise240/Al_tour/handlers"
+	"github.com/Haise240/al_tour/database"
+	"github.com/Haise240/al_tour/handlers"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 )

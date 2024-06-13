@@ -3,20 +3,18 @@ package models
 import "time"
 
 type User struct {
-	ID        int       `json:"id"`
-	Username  string    `json:"username"`
-	Password  string    `json:"-"`
-	Email     string    `json:"email"`
-	CreatedAt time.Time `json:"created_at`
+	ID       int    `json:"id"`
+	Username string `json:"username"`
+	Password string `json:"-"`
+	Email    string `json:"email"`
 }
 
 type Tour struct {
-	ID          int       `json:"id"`
-	Title       string    `json:"title"`
-	Description string    `json:"descriprion"`
-	Price       float64   `json:"price"`
-	Duration    int       `json:"duration"`
-	CreatedAt   time.Time `json:"created_at`
+	ID          int     `json:"id"`
+	Title       string  `json:"title"`
+	Description string  `json:"descriprion"`
+	Price       float64 `json:"price"`
+	Duration    int     `json:"duration"`
 }
 
 // Booking represents a booking made by a user
