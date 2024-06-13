@@ -1,28 +1,26 @@
 package database
 
 import (
-	"context"
+	"database/sql"
+	"fmt"
 	"log"
-	"os"
 
-	"github.com/jackc/pgx/v4/pgxpool"
+	_ "github.com/jackc/pgx/v4/stdlib" // PostgreSQL driver
 )
 
-var DB *pgxpool.Pool
+var DB *sql.DB
 
-func Connect() {
-	dbURL := os.Getenv("DATABASE_URL")
-	config, err := pgxpool.ParseConfig(dbURL)
+func ConnectDB(connString string) (*sql.DB, error) {
+	db, err := sql.Open("pgx", connString)
 	if err != nil {
-		log.Fatalf("Unable to parse DATABASE_URL: %v\n", err)
+		return nil, fmt.Errorf("failed to connect to database: %w", err)
 	}
 
-	DB, err = pgxpool.ConnectConfig(context.Background(), config)
-	if err != nil {
-		log.Fatalf("Unable to connect to database: %v\n", err)
+	if err := db.Ping(); err != nil {
+		return nil, fmt.Errorf("failed to ping database: %w", err)
 	}
-}
 
-func Close() {
-	DB.Close()
+	log.Println("Connected to database")
+	DB = db
+	return DB, nil
 }

@@ -19,12 +19,14 @@ type Tour struct {
 
 // Booking represents a booking made by a user
 type Booking struct {
-	ID          int       `json:"id"`
-	UserID      int       `json:"user_id"`
-	TourID      int       `json:"tour_id"`
-	BookingDate time.Time `json:"booking_date"`
-	Status      string    `json:"status"`
-	TotalPrice  float64   `json:"total_price"`
+	ID           uint      `json:"id" gorm:"primary_key"`
+	TourID       uint      `json:"tour_id" gorm:"not null"`
+	UserName     string    `json:"user_name" gorm:"not null"`
+	UserContact  string    `json:"user_contact" gorm:"not null"` // Telegram или WhatsApp идентификатор
+	CheckInDate  time.Time `json:"check_in_date" gorm:"not null"`
+	CheckOutDate time.Time `json:"check_out_date" gorm:"not null"`
+	CreatedAt    time.Time `json:"created_at"`
+	UpdatedAt    time.Time `json:"updated_at"`
 }
 
 // Review represents a review made by a user
