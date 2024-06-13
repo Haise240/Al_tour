@@ -58,7 +58,7 @@ func CreateTour(c echo.Context) error {
 	tour.CreatedAt = time.Now()
 	err := database.DB.QueryRow(context.Background(),
 		"INSERT INTO tours (title, description, price, duration, created_at) VALUES ($1, $2, $3, $4, $5) RETURNING id",
-		tour.Title, tour.Description, tour.Price, tour.Duration, tour.CreatedAt).Scan(&tour.ID)
+		tour.Title, tour.Description, tour.Price, tour.Duration, tour.Seats).Scan(&tour.ID)
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, echo.Map{"error": "Failed to create tour"})
 	}
@@ -75,7 +75,7 @@ func UpdateTour(c echo.Context) error {
 
 	_, err := database.DB.Exec(context.Background(),
 		"UPDATE tours SET title=$1, description=$2, price=$3, duration=$4 WHERE id=$5",
-		tour.Title, tour.Description, tour.Price, tour.Duration, id)
+		tour.Title, tour.Description, tour.Price, tour.Duration, id, tour.Seats)
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, echo.Map{"error": "Failed to update tour"})
 	}

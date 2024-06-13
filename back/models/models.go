@@ -15,6 +15,7 @@ type Tour struct {
 	Description string  `json:"descriprion"`
 	Price       float64 `json:"price"`
 	Duration    int     `json:"duration"`
+	Seats       int     `json:"suration"`
 }
 
 // Booking represents a booking made by a user
