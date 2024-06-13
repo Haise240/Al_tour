@@ -55,7 +55,6 @@ func CreateTour(c echo.Context) error {
 		return c.JSON(http.StatusBadRequest, echo.Map{"error": "Invalid input"})
 	}
 
-	tour.CreatedAt = time.Now()
 	err := database.DB.QueryRow(context.Background(),
 		"INSERT INTO tours (title, description, price, duration, created_at) VALUES ($1, $2, $3, $4, $5) RETURNING id",
 		tour.Title, tour.Description, tour.Price, tour.Duration, tour.Seats).Scan(&tour.ID)
@@ -102,7 +101,7 @@ func GetTours(c echo.Context) error {
 	var tours []models.Tour
 	for rows.Next() {
 		var tour models.Tour
-		if err := rows.Scan(&tour.ID, &tour.Title, &tour.Description, &tour.Price, &tour.Duration, &tour.CreatedAt); err != nil {
+		if err := rows.Scan(&tour.ID, &tour.Title, &tour.Description, &tour.Price, &tour.Duration, &tour.Seats); err != nil {
 			return c.JSON(http.StatusInternalServerError, echo.Map{"error": "Failed to scan tour"})
 		}
 		tours = append(tours, tour)
@@ -116,7 +115,7 @@ func GetTour(c echo.Context) error {
 	var tour models.Tour
 	err := database.DB.QueryRow(context.Background(),
 		"SELECT id, title, description, price, duration, created_at FROM tours WHERE id=$1",
-		id).Scan(&tour.ID, &tour.Title, &tour.Description, &tour.Price, &tour.Duration, &tour.CreatedAt)
+		id).Scan(&tour.ID, &tour.Title, &tour.Description, &tour.Price, &tour.Duration, &tour.Seats)
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, echo.Map{"error": "Failed to fetch tour"})
 	}
