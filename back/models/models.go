@@ -29,13 +29,3 @@ type Booking struct {
 	CreatedAt    time.Time `json:"created_at"`
 	UpdatedAt    time.Time `json:"updated_at"`
 }
-
-// Review represents a review made by a user
-type Review struct {
-	ID        int       `json:"id"`
-	UserID    int       `json:"user_id"`
-	TourID    int       `json:"tour_id"`
-	Rating    int       `json:"rating"`
-	Comment   string    `json:"comment"`
-	CreatedAt time.Time `json:"created_at"`
-}
