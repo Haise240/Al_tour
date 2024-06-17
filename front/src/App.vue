@@ -1,9 +1,7 @@
 <template>
     <div id="app">
       <HeaderMain/>
-      <IntroductionMain />
       <ToursMain />
-      <ReviewsMain />
       <FaqMain />
       <ContactMain />
       <FooterMain />
@@ -12,9 +10,7 @@
   
   <script>
   import HeaderMain from './components/HeaderMain.vue'
-  import IntroductionMain from './components/IntroductionMain.vue'
   import ToursMain from './components/ToursMain.vue'
-  import ReviewsMain from './components/RevuewsMain.vue'
   import FaqMain from './components/FaqMain.vue'
   import ContactMain from './components/ContactMain.vue'
   import FooterMain from './components/FooterMain.vue'
@@ -23,9 +19,7 @@
     name: 'App',
     components: {
       HeaderMain,
-      IntroductionMain,
       ToursMain,
-      ReviewsMain,
       FaqMain,
       ContactMain,
       FooterMain
